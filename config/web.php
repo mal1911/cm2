@@ -12,7 +12,31 @@ $config = [
     '@bower' => '@vendor/bower-asset',
     '@npm' => '@vendor/npm-asset',
   ],
+
+  'modules' => [
+    'admin' => [
+      'class' => 'app\modules\admin\Module',
+    ],
+  ],
+
   'components' => [
+
+    // Отключаем бутстрап 3
+    'assetManager' => [
+      'bundles' => [
+      /*  'yii\web\JqueryAsset' => [
+          'js'=>[]
+        ],*/
+        'yii\bootstrap\BootstrapPluginAsset' => [
+          'js'=>[]
+        ],
+        'yii\bootstrap\BootstrapAsset' => [
+          'css' => [],
+        ],
+
+      ],
+    ],
+
     'request' => [
       // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
       'cookieValidationKey' => '4dA739aXi65aQpVqkzcqN0QcSvBnHc3Q',
