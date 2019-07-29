@@ -27,10 +27,23 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
         ],
     ];
 
+    /*
+     * Этот метод находит экземпляр identity class, используя ID пользователя.
+     * Этот метод используется, когда необходимо поддерживать состояние
+     * аутентификации через сессии.
+     */
+
     public static function findIdentity($id)
     {
         return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
     }
+
+    /*
+     * Этот метод находит экземпляр identity class, используя токен доступа.
+     * Метод используется, когда требуется аутентифицировать пользователя только
+     * по секретному токену (например в RESTful приложениях, не сохраняющих
+     * состояние между запросами).
+     */
 
     public static function findIdentityByAccessToken($token, $type = null)
     {
@@ -54,16 +67,29 @@ class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
         return null;
     }
 
+    /*
+     * Этот метод возвращает ID пользователя, представленного данным экземпляром identity.
+     */
     public function getId()
     {
         return $this->id;
     }
+
+    /*
+     * Этот метод возвращает ключ, используемый для основанной
+     * на cookie аутентификации. Ключ сохраняется в аутентификационной cookie
+     * и позже сравнивается с версией, находящейся на сервере, чтобы удостоверится,
+     * что аутентификационная cookie верная.
+     */
 
     public function getAuthKey()
     {
         return $this->authKey;
     }
 
+    /*
+     * Этот метод реализует логику проверки ключа для основанной на cookie аутентификации.
+    */
     public function validateAuthKey($authKey)
     {
         return $this->authKey === $authKey;
