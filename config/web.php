@@ -17,6 +17,7 @@ $config = [
     'admin' => [
       'class' => 'app\modules\admin\Module',
       'layout' => 'main',
+      'defaultRoute' => 'site',
     ],
   ],
 
@@ -49,6 +50,7 @@ $config = [
     'user' => [
       'identityClass' => 'app\models\User',
       'enableAutoLogin' => true,
+      'loginUrl' => 'login',
     ],
     'errorHandler' => [
       'errorAction' => 'site/error',
@@ -75,6 +77,7 @@ $config = [
         'enablePrettyUrl' => true,
         'showScriptName' => false,
         'rules' => [
+          '<action:(login|logout)>' => 'admin/user/<action>',
         ],
     ],
 

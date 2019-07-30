@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 
+app\modules\admin\assets\AppAdminAsset::register($this);
+
 if (Yii::$app->controller->action->id === 'login') {
   /**
    * Do not use this code in your template. Remove it.
@@ -9,11 +11,6 @@ if (Yii::$app->controller->action->id === 'login') {
    */
   echo $this->render('main-login', ['content' => $content]);
 } else {
-
-  app\modules\admin\assets\AdminAsset::register($this);
-
-
-
   $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed2010/adminlte/dist');
   ?>
   <?php $this->beginPage() ?>
@@ -29,23 +26,19 @@ if (Yii::$app->controller->action->id === 'login') {
   <body class="hold-transition skin-blue sidebar-mini">
   <?php $this->beginBody() ?>
   <div class="wrapper">
-
     <?= $this->render(
       'header.php',
       ['directoryAsset' => $directoryAsset]
     ) ?>
-
     <?= $this->render(
       'left.php',
       ['directoryAsset' => $directoryAsset]
     )
     ?>
-
     <?= $this->render(
       'content.php',
       ['content' => $content, 'directoryAsset' => $directoryAsset]
     ) ?>
-
   </div>
 
   <?php $this->endBody() ?>

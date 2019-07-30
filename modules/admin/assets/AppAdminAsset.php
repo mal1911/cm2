@@ -5,7 +5,7 @@ namespace app\modules\admin\assets;
 
 use yii\web\AssetBundle;
 
-class AdminAsset extends AssetBundle {
+class AppAdminAsset extends AssetBundle {
   public $basePath = '@webroot';
   public $baseUrl = '@web';
 
@@ -16,7 +16,7 @@ class AdminAsset extends AssetBundle {
     'js/admin.js'
   ];
   public $depends = [
-    'app\modules\admin\assets\AdminBootstrapAsset',
+    'app\modules\admin\assets\AppAdminBootstrapAsset',
     'dmstr\web\AdminLteAsset',
   ];
 }

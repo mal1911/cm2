@@ -47,8 +47,8 @@ class SiteController extends Controller {
   }
 
   public function actionIndex() {
-    debug(Yii::$app->user->isGuest);
-    die;
+//    debug(Yii::$app->user->isGuest);
+//    die;
     return $this->render('index');
   }
 

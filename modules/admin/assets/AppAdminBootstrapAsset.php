@@ -4,7 +4,7 @@ namespace app\modules\admin\assets;
 
 use yii\web\AssetBundle;
 
-class AdminBootstrapAsset extends AssetBundle {
+class AppAdminBootstrapAsset extends AssetBundle {
   public $sourcePath = '@bower/bootstrap/dist';
 
   public $css = [
