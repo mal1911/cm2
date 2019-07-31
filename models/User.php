@@ -2,32 +2,10 @@
 
 namespace app\models;
 
-
+use Yii;
 use yii\db\ActiveRecord;
 
 class User extends ActiveRecord implements \yii\web\IdentityInterface {
-  public $id;
-  public $username;
-  public $password;
-  public $authKey;
-  public $accessToken;
-
-  private static $users = [
-    '100' => [
-      'id' => '100',
-      'username' => 'admin',
-      'password' => 'admin',
-      'authKey' => 'test100key',
-      'accessToken' => '100-token',
-    ],
-    '101' => [
-      'id' => '101',
-      'username' => 'demo',
-      'password' => 'demo',
-      'authKey' => 'test101key',
-      'accessToken' => '101-token',
-    ],
-  ];
 
   // наименование таблицы
   public static function tableName () {
@@ -65,7 +43,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface {
   }
 
   public static function findByUsername ($username) {
-    return static::findOne(['username' => $username]);
+    return static::findOne(['login' => $username]);
   }
 
   /*
@@ -94,11 +72,11 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface {
   }
 
   public function generateAuthKey () {
-    $this->auth_key = \yii::$app->security->generateRandomString();
+    $this->auth_key = Yii::$app->security->generateRandomString();
   }
 
 
   public function validatePassword ($password) {
-    return \yii::$app->security->validatePassword($password, $this->password);
+    return Yii::$app->security->validatePassword($password, $this->password);
   }
 }

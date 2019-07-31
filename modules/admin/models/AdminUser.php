@@ -2,35 +2,31 @@
 
 namespace app\modules\admin\models;
 
-use yii\db\ActiveRecord ;
+use Yii;
 
-
-class User extends ActiveRecord {
+class AdminUser extends  \app\models\User {
 
   public $password_repeat;
 
-  public static function tableName () {
-    return 'user';
-  }
-
   public function rules () {
     return [
-      [['username', 'title', 'password', 'auth_key'], 'string', 'max' => 255],
-      [['admin'], 'boolean'],
-      [['password', 'username'], 'required'],
-      ['password_repeat', 'compare', 'compareAttribute' => 'password'/*, 'message' => 'Введенные пароли не совпадают'*/],
+      [['login', 'title', 'email', 'password', 'auth_key'], 'string', 'max' => 255],
+      [['role'], 'boolean'],
+      //[['password', 'login'], 'required'],
+      ['password_repeat', 'compare', 'compareAttribute' => 'password'],
     ];
   }
 
   public function attributeLabels () {
     return [
-      'id' => '№',
-      'username' => 'Имя пользователя',
-      'title' => 'ФИО',
+      'id' => 'ID',
+      'login' => 'Логин',
+      'title' => 'Имя',
+      'email' => 'email',
       'password' => 'Пароль',
       'password_repeat' => 'Подтверждение пароля',
       'auth_key' => 'Ключ',
-      'admin' => 'Администратор',
+      'role' => 'Администратор',
     ];
   }
 
@@ -45,5 +41,4 @@ class User extends ActiveRecord {
   public function afterFind () {
     $this->password = '';
   }
-
 }
