@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 
 <?php $form = ActiveForm::begin(); ?>
 
-<?= $form->field($model, 'login')->textInput(['maxlength' => true]) ?>
+<?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
 <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 

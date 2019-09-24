@@ -57,6 +57,7 @@ class UserController extends AppAdminController {
     }
 
     $model = new LoginForm();
+//    print_r($model->username);
     if ($model->load(Yii::$app->request->post()) && $model->login()) {
       return $this->goBack();
     }

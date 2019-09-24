@@ -43,7 +43,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface {
   }
 
   public static function findByUsername ($username) {
-    return static::findOne(['login' => $username]);
+    return static::findOne(['username' => $username]);
   }
 
   /*
@@ -74,7 +74,6 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface {
   public function generateAuthKey () {
     $this->auth_key = Yii::$app->security->generateRandomString();
   }
-
 
   public function validatePassword ($password) {
     return Yii::$app->security->validatePassword($password, $this->password);

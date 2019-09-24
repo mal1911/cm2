@@ -233,12 +233,12 @@ $user = Yii::$app->user->identity;
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <!--            <img src="<? /*= $directoryAsset */ ?>/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
---> <span class="hidden-xs"><?= $user->login; ?></span>
+--> <span class="hidden-xs"><?= $user->username; ?></span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header">
-              <p><?= $user->login . ' - ' . $user->title; ?>;?></p>
+              <p><?= $user->username . ' - ' . $user->title; ?></p>
             </li>
             <!-- Menu Body -->
             <li class="user-body">
@@ -251,7 +251,7 @@ $user = Yii::$app->user->identity;
               <div class="pull-right">
                 <?= Html::a(
                   'Sign out',
-                  ['/user/logout'],
+                  ['/logout'],
                   [
                     'data' => ['method' => 'post'],
                     'class' => 'btn btn-default btn-flat',

@@ -5,6 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
   'id' => 'colibrimed',
+  'name' => 'ООО "Колибримед"',
   'basePath' => dirname(__DIR__),
   'language' => 'ru-Ru',
   'bootstrap' => ['log'],

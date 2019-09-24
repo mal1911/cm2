@@ -10,9 +10,9 @@ class AdminUser extends  \app\models\User {
 
   public function rules () {
     return [
-      [['login', 'title', 'email', 'password', 'auth_key'], 'string', 'max' => 255],
+      [['username', 'title', 'email', 'password', 'auth_key'], 'string', 'max' => 255],
       [['role'], 'boolean'],
-      //[['password', 'login'], 'required'],
+      //[['password', 'username'], 'required'],
       ['password_repeat', 'compare', 'compareAttribute' => 'password'],
     ];
   }
@@ -20,7 +20,7 @@ class AdminUser extends  \app\models\User {
   public function attributeLabels () {
     return [
       'id' => 'ID',
-      'login' => 'Логин',
+      'username' => 'Логин',
       'title' => 'Имя',
       'email' => 'email',
       'password' => 'Пароль',

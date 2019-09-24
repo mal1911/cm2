@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
               <?php foreach ($users as $user): ?>
                 <tr>
                   <td><?= $user->id; ?></td>
-                  <td><?= $user->login; ?></td>
+                  <td><?= $user->username; ?></td>
                   <td><?= $user->title; ?></td>
                   <td><?= $user->email; ?></td>
                   <td><?= $user->role ? 'Администратор' : 'Пользователь'; ?></td>
